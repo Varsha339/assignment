@@ -130,7 +130,7 @@ function add_Article_cpt_submenu_example(){
 					return "Something went wrong: $error_message";
 				} else {
 					echo '<pre>';
-					
+					  
 					 //var_dump( $post_arr  );
 					echo '</pre>';
 				}
