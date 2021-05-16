@@ -627,3 +627,122 @@ function twentytwentyone_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
+
+
+
+/**************************************************************************customization started form here*******************************************************************************/
+
+
+/*****column headers created for displayed on user.php page ****/
+function modify_user_columns_language($column_headers) {
+    $column_headers['street'] = 'Street';
+    return $column_headers;
+}
+add_action('manage_users_columns', 'modify_user_columns_language');
+
+
+function new_contact_methods_language( $contactmethods ) {
+    $contactmethods['street'] = 'Street';
+    return $contactmethods;
+}
+add_filter( 'user_contactmethods', 'new_contact_methods_language', 10, 1 );
+
+function user_posts_count_column_content_street($vl, $column_name, $user_id) {
+   
+    switch ($column_name) {
+        case 'street' :
+            return get_the_author_meta( 'street', $user_id );
+        default:
+    }
+    return $vl;
+}
+add_action('manage_users_custom_column', 'user_posts_count_column_content_street', 10, 3);
+
+
+/******* users custom fields created *********/
+
+add_action( 'show_user_profile', 'extra_user_profile_fields' );
+add_action( 'edit_user_profile', 'extra_user_profile_fields' );
+
+function extra_user_profile_fields( $user ) { ?>
+    <h3><?php _e("Users extra information", "blank"); ?></h3>
+
+    <table class="form-table">
+    <tr>
+        <th><label for="street"><?php _e("street"); ?></label></th>
+        <td>
+            <input type="text" name="street" id="street" value="<?php echo esc_attr( get_the_author_meta( 'street', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="city"><?php _e("City"); ?></label></th>
+        <td>
+            <input type="text" name="city" id="city" value="<?php echo esc_attr( get_the_author_meta( 'city', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+	    <tr>
+        <th><label for="suite"><?php _e("suite"); ?></label></th>
+        <td>
+            <input type="text" name="suite" id="suite" value="<?php echo esc_attr( get_the_author_meta( 'suite', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+    <tr>
+    <th><label for="zipcode"><?php _e("zipcode"); ?></label></th>
+        <td>
+            <input type="text" name="zipcode" id="zipcode" value="<?php echo esc_attr( get_the_author_meta( 'zipcode', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+	 <tr>
+        <th><label for="bs"><?php _e("bs"); ?></label></th>
+        <td>
+            <input type="text" name="bs" id="bs" value="<?php echo esc_attr( get_the_author_meta( 'bs', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+	<tr>
+        <th><label for="company_name"><?php _e("company_name"); ?></label></th>
+        <td>
+            <input type="text" name="company_name" id="company_name" value="<?php echo esc_attr( get_the_author_meta( 'name', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+	<tr>
+        <th><label for="catchPhrase"><?php _e("catchPhrase"); ?></label></th>
+        <td>
+            <input type="text" name="catchPhrase" id="catchPhrase" value="<?php echo esc_attr( get_the_author_meta( 'catchPhrase', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+    <tr>
+        <th><label for="website"><?php _e("website"); ?></label></th>
+        <td>
+            <input type="text" name="website" id="website" value="<?php echo esc_attr( get_the_author_meta( 'website', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+    <tr>
+    <th><label for="phone"><?php _e("phone"); ?></label></th>
+        <td>
+            <input type="text" name="phone" id="phone" value="<?php echo esc_attr( get_the_author_meta( 'phone', $user->ID ) ); ?>" class="regular-text" /><br />
+        </td>
+    </tr>
+    </table>
+<?php }
+/******* Update users data*********/
+
+add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
+add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
+
+function save_extra_user_profile_fields( $user_id ) {
+    if ( empty( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'update-user_' . $user_id ) ) {
+        return;
+    }
+    
+    if ( !current_user_can( 'edit_user', $user_id ) ) { 
+        return false; 
+    }
+    update_user_meta( $user_id, 'street', $_POST['street'] );
+    update_user_meta( $user_id, 'city', $_POST['city'] );
+    update_user_meta( $user_id, 'suite', $_POST['suite'] );
+    update_user_meta( $user_id, 'zipcode', $_POST['zipcode'] );
+    update_user_meta( $user_id, 'phone', $_POST['phone'] );
+    update_user_meta( $user_id, 'company', $_POST['company'] );
+    update_user_meta( $user_id, 'website', $_POST['website'] );
+		
+}
