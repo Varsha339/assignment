@@ -669,55 +669,55 @@ function extra_user_profile_fields( $user ) { ?>
 
     <table class="form-table">
     <tr>
-        <th><label for="street"><?php _e("street"); ?></label></th>
+        <th><label for="street">Street</label></th>
         <td>
             <input type="text" name="street" id="street" value="<?php echo esc_attr( get_the_author_meta( 'street', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>
     </tr>
     <tr>
-        <th><label for="city"><?php _e("City"); ?></label></th>
+        <th><label for="city">City</label></th>
         <td>
             <input type="text" name="city" id="city" value="<?php echo esc_attr( get_the_author_meta( 'city', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>
     </tr>
 	    <tr>
-        <th><label for="suite"><?php _e("suite"); ?></label></th>
+        <th><label for="suite">Suite</label></th>
         <td>
             <input type="text" name="suite" id="suite" value="<?php echo esc_attr( get_the_author_meta( 'suite', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>
     </tr>
     <tr>
-    <th><label for="zipcode"><?php _e("zipcode"); ?></label></th>
+    <th><label for="zipcode">Zipcode</label></th>
         <td>
             <input type="text" name="zipcode" id="zipcode" value="<?php echo esc_attr( get_the_author_meta( 'zipcode', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>
     </tr>
 	 <tr>
-        <th><label for="bs"><?php _e("bs"); ?></label></th>
+        <th><label for="bs">Bs</label></th>
         <td>
             <input type="text" name="bs" id="bs" value="<?php echo esc_attr( get_the_author_meta( 'bs', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>
     </tr>
 	<tr>
-        <th><label for="company_name"><?php _e("company_name"); ?></label></th>
+        <th><label for="company_name"><?php _e("Company Name"); ?></label></th>
         <td>
             <input type="text" name="company_name" id="company_name" value="<?php echo esc_attr( get_the_author_meta( 'name', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>
     </tr>
 	<tr>
-        <th><label for="catchPhrase"><?php _e("catchPhrase"); ?></label></th>
+        <th><label for="catchPhrase"><?php _e("CatchPhrase"); ?></label></th>
         <td>
             <input type="text" name="catchPhrase" id="catchPhrase" value="<?php echo esc_attr( get_the_author_meta( 'catchPhrase', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>
     </tr>
     <tr>
-        <th><label for="website"><?php _e("website"); ?></label></th>
+        <th><label for="website">Website</label></th>
         <td>
             <input type="text" name="website" id="website" value="<?php echo esc_attr( get_the_author_meta( 'website', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>
     </tr>
     <tr>
-    <th><label for="phone"><?php _e("phone"); ?></label></th>
+    <th><label for="phone">Phone</label></th>
         <td>
             <input type="text" name="phone" id="phone" value="<?php echo esc_attr( get_the_author_meta( 'phone', $user->ID ) ); ?>" class="regular-text" /><br />
         </td>

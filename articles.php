@@ -7,9 +7,9 @@ Author: xyz
 Version: 1.0
 Author URI: https://www.google.com
 */
+
 /*create custom post type here*/
 function register_article_post_type() {
-
 	$labels = array(
 		'name'               => 'Article',
 		'singular_name'      => 'Articles',
@@ -18,7 +18,6 @@ function register_article_post_type() {
 		'edit_item'          => 'Edit Article',
 		'new_item'           => 'New Article',
 		'all_items'          => 'All Article',
-		'attributes'         => 'Item Attributes',
 		'menu_icon'			 => 'dashicons-analytics', /*icon for custom post type*/
 		'view_item'          => 'View Article',
 		'search_items'       => 'Search Article',
@@ -34,7 +33,6 @@ function register_article_post_type() {
 		'show_ui'            => true,
 		'show_in_menu'       => true,
 		'query_var'          => true,
-		'taxonomies'         => array( 'category', 'post_tag' ),
 		'menu_icon'			 => 'dashicons-analytics',
 		'rewrite'            => array( 'slug' => 'Articles' ),
 		'capability_type'    => 'post',
@@ -45,17 +43,11 @@ function register_article_post_type() {
 	);
 
 	register_post_type( 'article', $args );
-
 }
-
 add_action( 'init', 'register_article_post_type' );
 
-
-
 add_action('admin_menu', 'add_article_cpt_submenu_example');
-
 /*create sub-menu as Fetch Api*/
-
 function add_article_cpt_submenu_example(){
 
      add_submenu_page(
