@@ -82,6 +82,7 @@ function Fetch_users() {
         update_user_meta($user_id, 'phone', $u_ser->phone);
         update_user_meta($user_id, 'website', $u_ser->website);
         update_user_meta($user_id, 'name', $u_ser->company->name);
+        update_user_meta($user_id, 'catchPhrase', $u_ser->company->catchPhrase);
         update_user_meta($user_id, 'bs', $u_ser->company->bs);
         update_user_meta($user_id, 'street', $u_ser->address->street);
         update_user_meta($user_id, 'suite', $u_ser->address->suite);

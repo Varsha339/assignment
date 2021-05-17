@@ -742,7 +742,9 @@ function save_extra_user_profile_fields( $user_id ) {
     update_user_meta( $user_id, 'suite', $_POST['suite'] );
     update_user_meta( $user_id, 'zipcode', $_POST['zipcode'] );
     update_user_meta( $user_id, 'phone', $_POST['phone'] );
-    update_user_meta( $user_id, 'company', $_POST['company'] );
+    update_user_meta( $user_id, 'name', $_POST['name'] );
+    update_user_meta( $user_id, 'bs', $_POST['bs'] );
+    update_user_meta( $user_id, 'catchPhrase', $_POST['catchPhrase'] );
     update_user_meta( $user_id, 'website', $_POST['website'] );
 		
 }
